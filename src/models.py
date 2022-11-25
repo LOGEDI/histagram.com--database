@@ -16,6 +16,8 @@ class User(Base):
     name = Column(String(250), nullable=False)
     email= Column(String(250),nullable=False)
     password = Column(String(250),nullable=False)
+    followers_id = Column(Integer,ForeignKey('followers.id'))
+    #user_id = Column(Integer,ForeignKey('user.id'))
 
 class Followers(Base):
     __tablename__ = 'followers'
@@ -25,6 +27,8 @@ class Followers(Base):
     username = Column(String(250))
     email = Column(String(250),ForeignKey('email.id'))
     password = Column(String(250), nullable=False)
+    user_id = Column(Integer,ForeignKey('user.id'))
+   #followers_id = Column(Integer,ForeignKey('followers.id'))
     #person_id = Column(Integer, ForeignKey('person.id'))
     #person = relationship(Person)
 class Comments(Base):
@@ -33,6 +37,8 @@ class Comments(Base):
     user_id = Column(Integer, primary_key=True) 
     author_id = Column(String(250))
     follower_id =Column(String(250))
+    user_id = Column(Integer,ForeignKey('user.id'))
+   # followers_id = Column(Integer,ForeignKey('followers.id'))
     
 
 class Post(Base):
@@ -41,6 +47,9 @@ class Post(Base):
     user_id = Column(Integer, primary_key=True) 
     author_id = Column (String(250))
     follower_id =Column(String(250))
+    user_id = Column(Integer,ForeignKey('user.id'))
+    comment_id = Column(Integer,ForeignKey(' comment.id'))
+    #followers_id = Column(Integer,ForeignKey('followers.id'))
    # video = Column(String(250))
     #image = Column(String(250))
     #music = Column (String(250))
