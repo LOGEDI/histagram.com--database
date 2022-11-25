@@ -24,10 +24,14 @@ class Followers(Base):
     # Here we define columns for the table address.
     # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
-    username = Column(String(250))
-    email = Column(String(250),ForeignKey('email.id'))
-    password = Column(String(250), nullable=False)
-    user_id = Column(Integer,ForeignKey('user.id'))
+    user_following_id = Column(Integer, ForeignKey('user.id'))
+    user_followed_id = Column(Integer, ForeignKey('user.id'))
+    #username = Column(String(250))
+    #password = Column(String(250), nullable=False)
+
+    #user_id = Column(Integer,ForeignKey('user.id'))
+    #email = Column(String(250),ForeignKey('email.id'))
+   
    #followers_id = Column(Integer,ForeignKey('followers.id'))
     #person_id = Column(Integer, ForeignKey('person.id'))
     #person = relationship(Person)
